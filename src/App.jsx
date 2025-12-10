@@ -1,8 +1,17 @@
 import React from 'react'
+import Navbar from './Components/Navbar'
+import Sidebar from './Components/Sidebar'
+import SideContent from './Components/SideContent'
 
 const App = () => {
   return (
-    <div className='bg-emerald-500'>App</div>
+    <div className=''>
+      <Navbar/>
+      <div>
+        {/* <Sidebar/> */}
+        <SideContent/>
+      </div>
+    </div>
   )
 }
 
