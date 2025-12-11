@@ -1,63 +1,90 @@
-import React, { useState } from 'react';
-// Assuming you have Twitter, UserRoundPen icons imported from a library like 'lucide-react'
-import { Twitter, UserRoundPen, Menu, X } from 'lucide-react'; 
+import {
+  ArrowRight,
+  Bell,
+  FolderDot,
+  Heart,
+  House,
+  Plus,
+  Search,
+  SendHorizontal,
+  Wallet,
+} from "lucide-react";
+import React, { useState } from "react";
 
-const ResponsiveNavbar = () => {
-  // State to manage whether the mobile menu is open or closed
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Function to toggle the menu state
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+const Sidebar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
-    <div className="h-20 bg-white/40 shadow px-4 md:px-20">
-      <div className="flex items-center justify-between h-full">
-        {/* Logo - always visible */}
-        <Twitter color="#0f54c2" size={36} />
-
-        {/* Desktop Menu Links - Hidden on mobile (default) but visible from md screen size up */}
-        <ul className="hidden md:flex gap-10 text-2xl cursor-pointer">
-            <li className="hover:underline hover:underline-offset-6 text-emerald-600 font-medium">Home</li>
-            <li className="hover:underline hover:underline-offset-6 text-emerald-600 font-medium">Product</li>
-            <li className="hover:underline hover:underline-offset-6 text-emerald-600 font-medium">AboutUs</li>
-            <li className="hover:underline hover:underline-offset-6 text-emerald-600 font-medium">Contact</li>
-        </ul>
-        
-        {/* Desktop Profile Section - Hidden on mobile, visible from md up */}
-        <div className="hidden md:block">
-            {/* Replace `logIn` with your actual authentication state variable */}
-            {/* {logIn ? <UserRoundPen size={36} className="text-gray-700"/> : (<div>SignIn/SignUp</div>)} */}
-            <div>SignIn/SignUp</div> 
-        </div>
-
-        {/* Mobile Hamburger/Close Icon - Visible on mobile, hidden from md up */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="focus:outline-none">
-            {isMenuOpen ? <X size={36} className="text-gray-700" /> : <Menu size={36} className="text-gray-700" />}
-          </button>
-        </div>
+    <div className={`${isSidebarOpen?'w-60':'w-20'}hidden md:flex flex-col gap-1 shadow-2xl shadow-amber-900 h-screen`}>
+      <div className="mt-2 realtive flex justify-end pr-2">
+        {
+          isSidebarOpen?
+            (
+              <div className="rounded-full w-fit bg-emerald-600 hover:rotate-45">
+                <Plus size={32} color="white"/>
+              </div>
+            )
+            :
+            (
+              <div className="rounded-full w-fit bg-emerald-600 relative left-5">
+                <ArrowRight size={22} color="white"/>
+              </div>
+            )
+        }
       </div>
-
-      {/* Mobile Dropdown Menu (Conditional Rendering) */}
-      {/* This div appears below the main navbar when open, covering the screen or dropping down */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white shadow-lg p-4">
-          <ul className="flex flex-col gap-4 cursor-pointer">
-            <li className="text-emerald-600 font-medium py-2 border-b">Home</li>
-            <li className="text-emerald-600 font-medium py-2 border-b">Product</li>
-            <li className="text-emerald-600 font-medium py-2 border-b">AboutUs</li>
-            <li className="text-emerald-600 font-medium py-2 border-b">Contact</li>
-          </ul>
-          <div className="mt-4 py-2 border-t">
-             {/* {logIn ? <UserRoundPen size={36} className="text-gray-700"/> : (<div>SignIn/SignUp</div>)} */}
-             <div>SignIn/SignUp</div>
+      <div className="mt-3 gap-4 flex items-center">
+        <div className="w-full">
+          <div className="flex pl-2 rounded-2xl border bg-gray-500/30 mx-2 focus:ring-2 focus:ring-blue-500">
+            <div className="flex items-center">
+              <Search size={23} className="text-emerald-600" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="p-2 w-full font-medium border-gray-400 text-black border-none outline-none focus:border-none"
+            />
           </div>
         </div>
-      )}
+      </div>
+      <div className="flex gap-4 p-2 hover:bg-emerald-200 hover:border-r-2 hover:border-emerald-800">
+        <div className="">
+          <House size={32} />
+        </div>
+        <div className="text-2xl text-emerald-600">Dashboard</div>
+      </div>
+      <div className="flex gap-4 p-2 hover:bg-emerald-200 hover:border-r-2 hover:border-emerald-800">
+        <div>
+          <FolderDot size={32} />
+        </div>
+        <div className="text-2xl text-emerald-600">Project</div>
+      </div>
+      <div className="flex gap-4 p-2 hover:bg-emerald-200 hover:border-r-2 hover:border-emerald-800">
+        <div>
+          <Bell size={32} />
+        </div>
+        <div className="text-2xl text-emerald-600">
+          Notification
+        </div>
+      </div>
+      <div className="flex gap-4 p-2 hover:bg-emerald-200 hover:border-r-2 hover:border-emerald-800">
+        <div>
+          <Heart size={32} />
+        </div>
+        <div className="text-2xl text-emerald-600">Likes</div>
+      </div>
+      <div className="flex gap-4 p-2 hover:bg-emerald-200 hover:border-r-2 hover:border-emerald-800">
+        <div>
+          <SendHorizontal size={32} />
+        </div>
+        <div className="text-2xl text-emerald-600">Message</div>
+      </div>
+      <div className="flex gap-4 p-2 hover:bg-emerald-200 hover:border-r-2 hover:border-emerald-800">
+        <div>
+          <Wallet size={32} />
+        </div>
+        <div className="text-2xl text-emerald-600">Wallet</div>
+      </div>
     </div>
   );
 };
 
-export default ResponsiveNavbar;
+export default Sidebar;

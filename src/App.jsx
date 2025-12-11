@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div className=''>
       <Navbar/>
-      <div>
-        {/* <Sidebar/> */}
+      <div className='flex'>
+        <Sidebar/>
         <SideContent/>
       </div>
     </div>
