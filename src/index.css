@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+
+/* In your main CSS file (e.g., globals.css) */
+.hide-scrollbar {
+  /* For Chrome, Safari, and Opera */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari/Opera */
+}
+
+/* Optional: Add a class for a *subtle* scrollbar that only appears on hover if you prefer */
+.subtle-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.subtle-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.subtle-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+}
