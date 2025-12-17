@@ -26,17 +26,17 @@ const Products = ({category}) => {
     <div className='mt-15'>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6'>
         {filteredProducts.map((item,idx)=>(
-          <div key={idx} className="p-4 shadow-lg rounded-lg border border-gray-200 flex flex-col items-center gap-3 hover:shadow-emerald-200 hover:scale-110 transition-all duration-150">
-            <img src={item.image} alt="" className='w-73 h-60 bg-cover p-3 shadow hover:scale-125'/>
-            <h1 className='mt-2 font-medium dark:text-white'>{item.title}</h1>
-            <div className='flex gap-6 w-full text-gray-700 dark:text-white'>
+          <div key={idx} className="p-4 shadow-lg rounded-lg border border-gray-200 flex flex-col items-center gap-3 hover:shadow-emerald-200 hover:scale-105 transition-all duration-150">
+            <img src={item.image} alt="" className='w-73 h-60 bg-cover p-3 shadow hover:scale-105'/>
+            <h1 className='mt-2 font-medium'>{item.title}</h1>
+            <div className='flex gap-6 w-full text-gray-700'>
               <span className=''>{item.price}</span>
               <div className='flex items-center '>
                 <span>{item.rating.rate}</span>
                 <Star color='yellow' size={20} className=''/>
               </div>
             </div>
-            <p className='text-gray-600 dark:text-white line-clamp-3'>{item.description}</p>
+            <p className='text-gray-600 line-clamp-3'>{item.description}</p>
           </div>
         ))}
       </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Menu, Twitter, UserRoundPen } from "lucide-react";
 
-const Navbar = () => {
-    const [logIn, setLogIn] = useState(true);
+const Navbar = ({setIsLogin}) => {
+    const [logIn, setLogIn] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleBurgur = () => {
@@ -30,7 +30,9 @@ const Navbar = () => {
                     {logIn ? (
                         <UserRoundPen size={36} className="text-emerald-700" />
                     ) : (
-                        <div className="inline-block text-2xl bg-emerald-600 font-light text-white p-3 rounded-2xl">
+                        <div className="inline-block text-2xl bg-emerald-600 font-light text-white p-3 rounded-2xl cursor-pointer"
+                            onClick={()=>setIsLogin(true)}
+                        >
                             SignIn/SignUp
                         </div>
                     )}

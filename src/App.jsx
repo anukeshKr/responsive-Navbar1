@@ -2,25 +2,22 @@ import React, { useState } from 'react'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import SideContent from './Components/SideContent'
+import Modal from './Components/Modal/Modal'
+import Signup from './Components/SignUp/Signup'
 
 const App = () => {
-  const [dark, setDark] = useState(false);
-
-  const toggleDark = () => {
-    setDark((prev) => !prev);
-    document.documentElement.classList.toggle("dark");
-  };
-
-  const toggleSwitch = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const[isLogin,setIsLogin] = useState(false)
+  
   return (
     <div className='h-screen flex flex-col '>
-      <Navbar dark={dark}/>
+      <Navbar setIsLogin={setIsLogin}/>
       <div className='flex flex-1 overflow-hidden'>
-        <Sidebar toggleSwitch={toggleSwitch} dark={dark} toggleDark={toggleDark}/>
-        <SideContent dark={dark}/>
+        <Sidebar />
+        <SideContent />
       </div>
+      <Modal isOpen={isLogin} onClose={() => setIsLogin(false)}>
+        <Signup/>
+      </Modal>  
     </div>
   )
 }
